@@ -10,70 +10,113 @@ script = ExtResource("1_qn1rc")
 zoom = Vector2(0.8, 0.8)
 
 [node name="Background" type="ColorRect" parent="."]
-offset_left = -2398.0
-offset_top = -1612.0
-offset_right = -2205.0
-offset_bottom = -1419.0
+offset_left = -2676.0
+offset_top = -1538.0
+offset_right = -2483.0
+offset_bottom = -1345.0
 scale = Vector2(27.9277, 16.0881)
 color = Color(0.617418, 0.51681, 0.419999, 1)
 
 [node name="Title" type="Label" parent="."]
-offset_left = -174.0
-offset_top = -136.0
-offset_right = 166.0
-offset_bottom = -84.0
+offset_left = -169.0
+offset_top = -134.0
+offset_right = 171.0
+offset_bottom = -82.0
 theme_override_fonts/font = ExtResource("1_ots34")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 42
 text = "miku hangout"
 
-[node name="info" type="Label" parent="."]
-offset_left = 185.0
-offset_top = -68.0
-offset_right = 414.0
-offset_bottom = 69.0
-theme_override_colors/font_color = Color(0.336608, 0.336608, 0.336608, 1)
+[node name="Result-Message" type="Label" parent="."]
+offset_left = -711.0
+offset_top = 280.0
+offset_right = 711.0
+offset_bottom = 387.0
 theme_override_fonts/font = ExtResource("1_ots34")
-theme_override_font_sizes/font_size = 28
-text = "(IP address is unnecessary if this is a server)"
-autowrap_mode = 3
+theme_override_font_sizes/font_size = 42
+horizontal_alignment = 1
 
-[node name="Server" type="Button" parent="."]
-offset_left = -207.0
-offset_top = -52.0
-offset_right = -89.0
-offset_bottom = -13.0
+[node name="Client" type="Node" parent="."]
+
+[node name="Port-Client" type="TextEdit" parent="Client"]
+offset_left = 62.0
+offset_top = 43.0
+offset_right = 296.0
+offset_bottom = 84.0
+theme_override_fonts/font = ExtResource("1_ots34")
+theme_override_font_sizes/font_size = 21
+placeholder_text = "Port..."
+metadata/_edit_use_anchors_ = true
+
+[node name="Username" type="TextEdit" parent="Client"]
+anchors_preset = -1
+anchor_left = 0.735043
+anchor_top = 3.34146
+anchor_right = 0.735043
+anchor_bottom = 3.34146
+offset_left = -674.043
+offset_top = -2016.88
+offset_right = -440.043
+offset_bottom = -1975.88
+theme_override_fonts/font = ExtResource("1_ots34")
+theme_override_font_sizes/font_size = 21
+placeholder_text = "Username...
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="IP" type="TextEdit" parent="Client"]
+offset_left = 63.0
+offset_top = 99.0
+offset_right = 299.0
+offset_bottom = 138.0
+theme_override_fonts/font = ExtResource("1_ots34")
+theme_override_font_sizes/font_size = 21
+placeholder_text = "IPV4 Address..."
+metadata/_edit_use_anchors_ = true
+
+[node name="Client-button" type="Button" parent="Client"]
+offset_left = 101.0
+offset_top = 156.0
+offset_right = 219.0
+offset_bottom = 195.0
+theme_override_fonts/font = ExtResource("1_ots34")
+theme_override_font_sizes/font_size = 21
+text = "Client"
+metadata/_edit_use_anchors_ = true
+
+[node name="Server" type="Node" parent="."]
+
+[node name="Max-Clients" type="TextEdit" parent="Server"]
+offset_left = -284.0
+offset_top = 49.0
+offset_right = -50.0
+offset_bottom = 90.0
+theme_override_fonts/font = ExtResource("1_ots34")
+theme_override_font_sizes/font_size = 21
+placeholder_text = "Max clients..."
+metadata/_edit_use_anchors_ = true
+
+[node name="Port-Server" type="TextEdit" parent="Server"]
+offset_left = -283.0
+offset_top = 104.0
+offset_right = -49.0
+offset_bottom = 145.0
+theme_override_fonts/font = ExtResource("1_ots34")
+theme_override_font_sizes/font_size = 21
+placeholder_text = "Port...
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Server-button" type="Button" parent="Server"]
+offset_left = -235.0
+offset_top = 161.0
+offset_right = -117.0
+offset_bottom = 200.0
+pivot_offset = Vector2(-247, 1)
 theme_override_fonts/font = ExtResource("1_ots34")
 theme_override_font_sizes/font_size = 21
 text = "Server
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="Client" type="Button" parent="."]
-offset_left = -207.0
-offset_top = 8.0
-offset_right = -89.0
-offset_bottom = 47.0
-theme_override_fonts/font = ExtResource("1_ots34")
-theme_override_font_sizes/font_size = 21
-text = "Client"
-metadata/_edit_use_anchors_ = true
-
-[node name="IP" type="TextEdit" parent="."]
-offset_left = -66.0
-offset_top = -52.0
-offset_right = 170.0
-offset_bottom = -13.0
-theme_override_fonts/font = ExtResource("1_ots34")
-theme_override_font_sizes/font_size = 21
-placeholder_text = "IPV4 Address..."
-metadata/_edit_use_anchors_ = true
-
-[node name="Port" type="TextEdit" parent="."]
-offset_left = -64.0
-offset_top = 8.0
-offset_right = 170.0
-offset_bottom = 49.0
-theme_override_fonts/font = ExtResource("1_ots34")
-theme_override_font_sizes/font_size = 21
-placeholder_text = "Port..."
-metadata/_edit_use_anchors_ = true
+[connection signal="pressed" from="Client/Client-button" to="." method="_on_clientbutton_pressed"]
+[connection signal="pressed" from="Server/Server-button" to="." method="_on_serverbutton_pressed"]

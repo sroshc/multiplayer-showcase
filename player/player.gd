@@ -2,12 +2,11 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-@onready var username_box: ColorRect = $Username_Box
 @onready var username_label: Label = $Username
 
 const SPEED: int = 100
 
-var username: String = "sroshc"
+@export var username: String = "sroshc"
 
 enum DIRECTION{
 	left,
@@ -16,13 +15,25 @@ enum DIRECTION{
 	up
 }
 
-var facing: int = DIRECTION.down
-var is_moving: bool = false
+@export var network_id: int
+@export var facing: int = DIRECTION.down
+@export var is_moving: bool = false
+@export var is_typing: bool = false
 
 func _ready() -> void:
-	update_username(username)
+	if(not is_multiplayer_authority()):
+		$Camera2D.queue_free()
+	else:
+		username = NetworkInfo.username
 
 func _physics_process(delta: float) -> void:
+	play_animation()
+	update_username(username)
+	
+	if not is_multiplayer_authority():
+		return
+	
+	
 	is_moving = false
 	velocity = Vector2.ZERO
 	
@@ -74,13 +85,8 @@ func play_animation() -> void:
 	animated_sprite_2d.play(start + "-" + end)
 
 func update_username(new_usr: String) -> void:
-	username_label.text = ""
-	await get_tree().process_frame 
-	
-	
 	username_label.text = new_usr
-	await get_tree().process_frame
-	username_label.position.x -= username_label.size.x/2
-	
-	username_box.size.x = username_label.size.x + 4
-	username_box.position.x = username_label.position.x - 2
+
+
+func _enter_tree() -> void:
+	set_multiplayer_authority(name.to_int())

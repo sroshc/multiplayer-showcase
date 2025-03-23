@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://ddadv35rp4eoo"]
+[gd_scene load_steps=55 format=3 uid="uid://ddadv35rp4eoo"]
 
 [ext_resource type="Script" uid="uid://m0s5pd7j0j5g" path="res://player/player.gd" id="1_xmmt6"]
 [ext_resource type="Texture2D" uid="uid://d037a2qjhfpfj" path="res://assets/topdown character/idle/2.1idle.png" id="2_xmmt6"]
@@ -343,7 +343,22 @@ font_size = 7
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 0.215686)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8t03j"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:facing")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath(".:is_moving")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath(".:username")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 0
 script = ExtResource("1_xmmt6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -351,7 +366,11 @@ position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_bql2f")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+zoom = Vector2(3.8, 3.8)
+process_callback = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.8, 0.8)
@@ -359,17 +378,14 @@ sprite_frames = SubResource("SpriteFrames_i10xq")
 animation = &"idle-down"
 frame_progress = 0.291036
 
-[node name="Username_Box" type="ColorRect" parent="."]
-offset_left = -1.0
-offset_top = -22.0
-offset_right = 1.0
-offset_bottom = -14.0
-color = Color(0, 0, 0, 0.447059)
-
 [node name="Username" type="Label" parent="."]
-offset_left = -1.0
+offset_left = -2.0
 offset_top = -22.0
-offset_right = 1.0
 offset_bottom = -14.0
+text = "miku"
 label_settings = SubResource("LabelSettings_5dkip")
 horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_8t03j")

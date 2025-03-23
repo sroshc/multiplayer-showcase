@@ -15,10 +15,16 @@ run/main_scene="uid://balnqdcvngsed"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SceneSwitcher="*res://global/scene_switcher.gd"
+NetworkInfo="*res://global/network_info.gd"
+
 [display]
 
-window/size/viewport_width=800
+window/size/viewport_width=1000
 window/size/viewport_height=600
+window/stretch/mode="viewport"
 
 [editor]
 
