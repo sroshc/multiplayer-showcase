@@ -24,7 +24,7 @@ func _deferred_goto_scene(path):
 	get_tree().root.add_child(current_scene)
 	get_tree().current_scene = current_scene
 
-func save_scene_and_goto(path) -> Variant:
+func save_scene_and_goto(path: String) -> Variant:
 	_deferred_save_scene_and_goto.call_deferred(path)
 	
 	return saved_scene_result
