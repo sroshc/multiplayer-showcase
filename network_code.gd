@@ -1,7 +1,6 @@
 extends Node2D
 
 const PLAYER: PackedScene = preload("res://player/player.tscn")
-const START_POS: Vector2 = Vector2(46, 122)
 
 @onready var message_box: TextEdit = $"CanvasLayer/Message-Box"
 @onready var send_message: Button = $"CanvasLayer/Send-Message"
@@ -9,15 +8,17 @@ const START_POS: Vector2 = Vector2(46, 122)
 @onready var latest_message: Label = $"CanvasLayer/Latest-Message"
 
 var peer = ENetMultiplayerPeer.new()
+var server_cam: Camera2D
 
-# Called when the node enters the scene tree for the first time.
+### Making a new client or a new server ###
 func _ready() -> void:
 	if(NetworkInfo.is_server):
 		peer.create_server(NetworkInfo.port, NetworkInfo.max_clients)
 		multiplayer.multiplayer_peer = peer
 		multiplayer.peer_connected.connect(_new_player)
 		multiplayer.peer_disconnected.connect(_player_left)
-		add_child(Camera2D.new())
+		server_cam = Camera2D.new()
+		add_child(server_cam)
 		send_message.queue_free()
 		message_box.queue_free()
 		ip_label.text = "Server running on " + NetworkInfo.get_local_ip() + " \non port " + str(NetworkInfo.port)
@@ -26,6 +27,8 @@ func _ready() -> void:
 		multiplayer.multiplayer_peer = peer
 		print("Created client!")
 
+
+### Handling players joining and leaving ###
 func _new_player(id: int):
 	if(id == 1):
 		return
@@ -33,13 +36,16 @@ func _new_player(id: int):
 	print("New player has joined with id of " + str(id))
 	
 	var new_player = PLAYER.instantiate()
-	new_player.position = START_POS
 	new_player.name = str(id)
 	call_deferred("add_child", new_player)
 
 func _player_left(id: int):
 	get_node(str(id)).queue_free()
-	
+###======================================###
+
+
+
+### Sending a message to all the clients ###
 func _on_send_message_pressed() -> void:
 	if message_box.text == "":
 		return
@@ -49,15 +55,36 @@ func _on_send_message_pressed() -> void:
 
 @rpc("any_peer", "call_local", "reliable")
 func receive_message(message: String) -> void:
-	latest_message.text = message
+	latest_message.text= message
+###======================================###
 
-
+### Handle clients leaving ###
 func _on_exit_button_pressed() -> void:
 	if(multiplayer.is_server()):
 		SceneSwitcher.end_temp_scene("Server closed successfully")
 	else:
 		peer.close()
 		SceneSwitcher.end_temp_scene("Exited successfully")
+###======================================###
+
+
+
+
+
+const CAMERA_SPEED: int = 300
+var direction: Vector2
+func _physics_process(delta: float) -> void:
+	if not multiplayer.is_server():
+		return
+	
+	direction = Vector2(0, 0)
+	
+	direction.x = Input.get_axis("left", "right")
+	direction.y = Input.get_axis("up", "down")
+	
+	server_cam.position += direction * delta * CAMERA_SPEED
+	
+	
 
 func is_typing():
 	return message_box.has_focus()

@@ -152,14 +152,15 @@ spawn_path = NodePath("..")
 
 [node name="Exit_Button" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
+anchor_left = -0.011
 anchor_right = -0.011
 anchor_bottom = 0.005
 offset_left = 16.0
 offset_top = 8.0
 offset_right = 137.0
 offset_bottom = 64.0
-theme_override_fonts/font = ExtResource("4_036b0")
-theme_override_font_sizes/font_size = 64
+theme_override_fonts/font = ExtResource("4_aqk2v")
+theme_override_font_sizes/font_size = 35
 text = "exit"
 metadata/_edit_use_anchors_ = true
 
