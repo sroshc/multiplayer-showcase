@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://balnqdcvngsed"]
+
+[ext_resource type="FontFile" uid="uid://byn5igpr867hb" path="res://assets/font/tinypixel/tinypixel.otf" id="1_ots34"]
+[ext_resource type="Script" uid="uid://b8u41dbmwm7mp" path="res://start.gd" id="1_qn1rc"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_qn1rc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.8, 0.8)
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2398.0
+offset_top = -1612.0
+offset_right = -2205.0
+offset_bottom = -1419.0
+scale = Vector2(27.9277, 16.0881)
+color = Color(0.617418, 0.51681, 0.419999, 1)
+
+[node name="Title" type="Label" parent="."]
+offset_left = -174.0
+offset_top = -136.0
+offset_right = 166.0
+offset_bottom = -84.0
+theme_override_fonts/font = ExtResource("1_ots34")
+theme_override_font_sizes/font_size = 45
+text = "miku hangout"
+
+[node name="info" type="Label" parent="."]
+offset_left = 185.0
+offset_top = -68.0
+offset_right = 414.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(0.336608, 0.336608, 0.336608, 1)
+theme_override_fonts/font = ExtResource("1_ots34")
+theme_override_font_sizes/font_size = 28
+text = "(IP address is unnecessary if this is a server)"
+autowrap_mode = 3
+
+[node name="Server" type="Button" parent="."]
+offset_left = -207.0
+offset_top = -52.0
+offset_right = -89.0
+offset_bottom = -13.0
+theme_override_fonts/font = ExtResource("1_ots34")
+theme_override_font_sizes/font_size = 21
+text = "Server
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Client" type="Button" parent="."]
+offset_left = -207.0
+offset_top = 8.0
+offset_right = -89.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("1_ots34")
+theme_override_font_sizes/font_size = 21
+text = "Client"
+metadata/_edit_use_anchors_ = true
+
+[node name="IP" type="TextEdit" parent="."]
+offset_left = -66.0
+offset_top = -52.0
+offset_right = 170.0
+offset_bottom = -13.0
+theme_override_fonts/font = ExtResource("1_ots34")
+theme_override_font_sizes/font_size = 21
+placeholder_text = "IPV4 Address..."
+metadata/_edit_use_anchors_ = true
+
+[node name="Port" type="TextEdit" parent="."]
+offset_left = -64.0
+offset_top = 8.0
+offset_right = 170.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("1_ots34")
+theme_override_font_sizes/font_size = 21
+placeholder_text = "Port..."
+metadata/_edit_use_anchors_ = true

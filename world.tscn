@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://brq6rmi5dyf4b"]
 
 [ext_resource type="Texture2D" uid="uid://cajd5bt6smwdo" path="res://assets/basic-tile-set.png" id="1_f3sb7"]
-[ext_resource type="PackedScene" uid="uid://ddadv35rp4eoo" path="res://PLAYER/player.tscn" id="2_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://ddadv35rp4eoo" path="res://player/player.tscn" id="2_fj7yv"]
 [ext_resource type="Texture2D" uid="uid://bkesdy2xx7htr" path="res://assets/environment/Cute_Fantasy_Free/Outdoor decoration/Outdoor_Decor_Free.png" id="2_tlwt5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fj7yv"]
