@@ -10,10 +10,10 @@ script = ExtResource("1_qn1rc")
 zoom = Vector2(0.8, 0.8)
 
 [node name="Background" type="ColorRect" parent="."]
-offset_left = -2676.0
-offset_top = -1538.0
-offset_right = -2483.0
-offset_bottom = -1345.0
+offset_left = -2729.0
+offset_top = -1478.0
+offset_right = -2536.0
+offset_bottom = -1285.0
 scale = Vector2(27.9277, 16.0881)
 color = Color(0.617418, 0.51681, 0.419999, 1)
 
@@ -118,5 +118,37 @@ text = "Server
 "
 metadata/_edit_use_anchors_ = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Debug" type="Node" parent="CanvasLayer"]
+
+[node name="Debug-Client" type="Button" parent="CanvasLayer/Debug"]
+offset_left = 123.0
+offset_top = 564.0
+offset_right = 234.0
+offset_bottom = 595.0
+text = "Debug Client"
+metadata/_edit_use_anchors_ = true
+
+[node name="Debug-Server" type="Button" parent="CanvasLayer/Debug"]
+offset_left = 6.0
+offset_top = 564.0
+offset_right = 118.0
+offset_bottom = 595.0
+text = "Debug Server"
+metadata/_edit_use_anchors_ = true
+
+[node name="Exit-button" type="Button" parent="CanvasLayer"]
+offset_left = 922.0
+offset_top = 27.0
+offset_right = 978.0
+offset_bottom = 83.0
+theme_override_fonts/font = ExtResource("1_ots34")
+theme_override_font_sizes/font_size = 42
+text = "x"
+
 [connection signal="pressed" from="Client/Client-button" to="." method="_on_clientbutton_pressed"]
 [connection signal="pressed" from="Server/Server-button" to="." method="_on_serverbutton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Debug/Debug-Client" to="." method="_on_debug_client_pressed"]
+[connection signal="pressed" from="CanvasLayer/Debug/Debug-Server" to="." method="_on_debug_server_pressed"]
+[connection signal="pressed" from="CanvasLayer/Exit-button" to="." method="_on_exitbutton_pressed"]

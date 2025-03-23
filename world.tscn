@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://brq6rmi5dyf4b"]
+[gd_scene load_steps=10 format=4 uid="uid://brq6rmi5dyf4b"]
 
 [ext_resource type="Script" uid="uid://85aolendp1dr" path="res://network_code.gd" id="1_aqk2v"]
 [ext_resource type="Texture2D" uid="uid://cajd5bt6smwdo" path="res://assets/basic-tile-set.png" id="1_f3sb7"]
 [ext_resource type="Texture2D" uid="uid://bkesdy2xx7htr" path="res://assets/environment/Cute_Fantasy_Free/Outdoor decoration/Outdoor_Decor_Free.png" id="2_tlwt5"]
+[ext_resource type="FontFile" uid="uid://coap5wa0dba15" path="res://assets/font/m5x7.ttf" id="4_036b0"]
 [ext_resource type="FontFile" uid="uid://byn5igpr867hb" path="res://assets/font/tinypixel/tinypixel.otf" id="4_aqk2v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fj7yv"]
@@ -150,13 +151,52 @@ spawn_path = NodePath("..")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Exit_Button" type="Button" parent="CanvasLayer"]
-offset_left = 6.0
-offset_top = 7.0
-offset_right = 127.0
-offset_bottom = 63.0
-theme_override_fonts/font = ExtResource("4_aqk2v")
-theme_override_font_sizes/font_size = 42
+anchors_preset = -1
+anchor_right = -0.011
+anchor_bottom = 0.005
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 137.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("4_036b0")
+theme_override_font_sizes/font_size = 64
 text = "exit"
 metadata/_edit_use_anchors_ = true
 
+[node name="Message-Box" type="TextEdit" parent="CanvasLayer"]
+offset_left = 7.0
+offset_top = 547.0
+offset_right = 318.0
+offset_bottom = 593.0
+theme_override_fonts/font = ExtResource("4_aqk2v")
+theme_override_font_sizes/font_size = 14
+placeholder_text = "Type a message..."
+wrap_mode = 1
+
+[node name="Send-Message" type="Button" parent="CanvasLayer"]
+offset_left = 321.0
+offset_top = 547.0
+offset_right = 439.0
+offset_bottom = 593.0
+theme_override_fonts/font = ExtResource("4_aqk2v")
+theme_override_font_sizes/font_size = 28
+text = "Send"
+
+[node name="IP-Label" type="Label" parent="CanvasLayer"]
+offset_left = 14.0
+offset_top = 77.0
+offset_right = 394.0
+offset_bottom = 123.0
+theme_override_fonts/font = ExtResource("4_036b0")
+theme_override_font_sizes/font_size = 48
+
+[node name="Latest-Message" type="Label" parent="CanvasLayer"]
+offset_left = 13.0
+offset_top = 488.0
+offset_right = 450.0
+offset_bottom = 534.0
+theme_override_fonts/font = ExtResource("4_036b0")
+theme_override_font_sizes/font_size = 48
+
 [connection signal="pressed" from="CanvasLayer/Exit_Button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Send-Message" to="." method="_on_send_message_pressed"]
