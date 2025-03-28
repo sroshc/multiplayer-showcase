@@ -11,6 +11,9 @@ func get_local_ip() -> String:
 	var interfaces = IP.get_local_interfaces()
 	print(str(interfaces))
 	
+	if OS.has_feature("windows"):
+		return IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")),1)
+	
 	for interface in interfaces:
 		if interface.name == "wlan0":
 			return  interface.addresses[0]
