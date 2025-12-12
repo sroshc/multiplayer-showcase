@@ -43,7 +43,8 @@ func _new_player(id: int):
 	player_node.call_deferred("add_child", new_player)
 
 func _player_left(id: int):
-	get_node(str(id)).queue_free()
+	print("Player with id of %s left!" % str(id) )
+	player_node.get_node(str(id)).queue_free()
 ###======================================###
 
 
