@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var username_label: Label = $Username
-@onready var canvas_layer: CanvasLayer = $CanvasLayer
+@onready var canvas_layer: CanvasLayer = $"../..".canvas_layer
 
 const SPEED: int = 100
 
@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	if not is_multiplayer_authority():
 		return
 	
-	if $"..".is_typing():
+	if $"../..".is_typing():
 		return
 	
 	

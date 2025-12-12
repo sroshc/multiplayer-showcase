@@ -2,10 +2,13 @@ extends Node2D
 
 const PLAYER: PackedScene = preload("res://player/player.tscn")
 
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
+
 @onready var message_box: TextEdit = $"CanvasLayer/Message-Box"
 @onready var send_message: Button = $"CanvasLayer/Send-Message"
 @onready var ip_label: Label = $"CanvasLayer/IP-Label"
 @onready var latest_message: Label = $"CanvasLayer/Latest-Message"
+@onready var player_node: Control = $Players
 
 var peer = ENetMultiplayerPeer.new()
 var server_cam: Camera2D
@@ -37,7 +40,7 @@ func _new_player(id: int):
 	
 	var new_player = PLAYER.instantiate()
 	new_player.name = str(id)
-	call_deferred("add_child", new_player)
+	player_node.call_deferred("add_child", new_player)
 
 func _player_left(id: int):
 	get_node(str(id)).queue_free()

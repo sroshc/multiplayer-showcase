@@ -146,7 +146,7 @@ tile_set = SubResource("TileSet_036b0")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://ddadv35rp4eoo")
-spawn_path = NodePath("..")
+spawn_path = NodePath("../Players")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -198,6 +198,13 @@ offset_right = 450.0
 offset_bottom = 534.0
 theme_override_fonts/font = ExtResource("4_036b0")
 theme_override_font_sizes/font_size = 48
+
+[node name="Players" type="Control" parent="."]
+y_sort_enabled = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="CanvasLayer/Exit_Button" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Send-Message" to="." method="_on_send_message_pressed"]

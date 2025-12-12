@@ -21,6 +21,16 @@ var debug: bool = true
 func _ready() -> void:
 	if not debug:
 		debug_node.queue_free()
+	
+	var env_port = OS.get_environment("YGDA_PORT")
+	
+	if env_port != "": # Make a server automatically if OS vars set
+		NetworkInfo.is_server = true
+		NetworkInfo.max_clients = 12
+		NetworkInfo.port = int(env_port)
+		print("Starting as a dedicated server!!!!")
+		SceneSwitcher.save_scene_and_goto("res://world.tscn")
+
 
 
 func _on_clientbutton_pressed() -> void:

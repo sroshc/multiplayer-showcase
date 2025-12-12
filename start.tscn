@@ -44,6 +44,7 @@ offset_right = 296.0
 offset_bottom = 84.0
 theme_override_fonts/font = ExtResource("1_ots34")
 theme_override_font_sizes/font_size = 21
+text = "8024"
 placeholder_text = "Port..."
 metadata/_edit_use_anchors_ = true
 
@@ -70,6 +71,7 @@ offset_right = 299.0
 offset_bottom = 138.0
 theme_override_fonts/font = ExtResource("1_ots34")
 theme_override_font_sizes/font_size = 21
+text = "ygda.sroshc.com"
 placeholder_text = "IPV4 Address..."
 metadata/_edit_use_anchors_ = true
 
