@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://brq6rmi5dyf4b"]
+[gd_scene load_steps=11 format=4 uid="uid://brq6rmi5dyf4b"]
 
 [ext_resource type="Script" uid="uid://85aolendp1dr" path="res://network_code.gd" id="1_aqk2v"]
 [ext_resource type="Texture2D" uid="uid://cajd5bt6smwdo" path="res://assets/basic-tile-set.png" id="1_f3sb7"]
 [ext_resource type="Texture2D" uid="uid://bkesdy2xx7htr" path="res://assets/environment/Cute_Fantasy_Free/Outdoor decoration/Outdoor_Decor_Free.png" id="2_tlwt5"]
 [ext_resource type="FontFile" uid="uid://coap5wa0dba15" path="res://assets/font/m5x7.ttf" id="4_036b0"]
 [ext_resource type="FontFile" uid="uid://byn5igpr867hb" path="res://assets/font/tinypixel/tinypixel.otf" id="4_aqk2v"]
+[ext_resource type="Script" uid="uid://3nt88yh1iysr" path="res://message_box.gd" id="5_dwbse"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fj7yv"]
 texture = ExtResource("1_f3sb7")
@@ -192,12 +193,14 @@ theme_override_fonts/font = ExtResource("4_036b0")
 theme_override_font_sizes/font_size = 48
 
 [node name="Latest-Message" type="Label" parent="CanvasLayer"]
-offset_left = 13.0
-offset_top = 488.0
-offset_right = 450.0
-offset_bottom = 534.0
+offset_left = 10.0
+offset_top = 249.0
+offset_right = 447.0
+offset_bottom = 569.0
 theme_override_fonts/font = ExtResource("4_036b0")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 32
+vertical_alignment = 2
+script = ExtResource("5_dwbse")
 
 [node name="Players" type="Control" parent="."]
 y_sort_enabled = true

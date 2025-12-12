@@ -59,7 +59,7 @@ func _on_send_message_pressed() -> void:
 
 @rpc("any_peer", "call_local", "reliable")
 func receive_message(message: String) -> void:
-	latest_message.text= message
+	latest_message.add_message(message)
 ###======================================###
 
 ### Handle clients leaving ###
